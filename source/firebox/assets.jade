@@ -1,0 +1,52 @@
+Assets
+	// AssetImage
+		These are images which are used in the room. Formats like PNG, JPG and GIF are supported - and likely many others too. Images with a transparency layer (such as with the PNG format) are supported. Here is the complete list of attributes:
+		id - id of the AssetImage
+		src - location of the image file
+		sbs3d (default "false") - when set to true, the image is treated as a SBS (side-by-side) formatted image. By default, the left eye will see the content on the left and the right eye the content on the right. Set the reverse3d attribute to true if you want to flip which side goes to each eye.
+		ou3d (default "false") - when set to true, the image is treated as an UO (under-over) format video. By default, the left eye will see the content on the top and the right eye the content on the bottom. Set the reverse3d attribute to true if you want to flip which side goes to each eye.
+		reverse3d (default "false") - flips which half of the image is shown to each eye, when either sbs3d or ou3d are set to true.
+		tex_clamp (default "false") - whether to perform texture clamping (GL_CLAMP_TO_EDGE), or allow textures to repeat (GL_REPEAT)
+		tex_linear (default "true") - if true, textures have bilinear filtering applied (GL_LINEAR). If false, a nearest sampling method (GL_NEAREST) is used which gives textures a pixellated look
+		tex_compress (default "false") - if true, uses hardware-supported texture compression on the image texture (GL_COMPRESSED_RGBA).
+	AssetImage#asset1(src="assets/images/image.jpg")
+
+
+
+	AssetSound#localmap_sound(src="localmap.mp3")
+
+
+	// AssetVideo
+		These are videos which can be used within the FireBoxRoom. Here is the complete list of attributes:
+
+		id - id of the AssetVideo
+		src - location of the video file
+		loop (default "false") - normally the video plays only one time, but when this attribute is set to true, the video will play indefinitely until the player leaves the room
+		auto_play (default "false") - when set to true, video will play immediately when the room is entered. If set to false (the default), the user must click on the Video (or any Object!) to play it.
+		tex_compress (default "false") - if true, uses hardware-supported texture compression on the video texture (GL_COMPRESSED_RGBA).
+		sbs3d (default "false") - when set to true, video is treated as an SBS (side-by-side) format video. By default, the left eye will see the content on the left and the right eye the content on the right in each frame of video. Set reverse3d to true if you want to flip this.
+		ou3d (default "false") - when set to true, video is treated as an UO (under-over) format video. By default, the left eye will see the content on the top and the right eye the content on the bottom in each frame of video. Set reverse3d to true if you want to flip this.
+		reverse3d (default "false") - flips which half of each frame is shown to each eye, when either sbs3d or ou3d are set to true.
+
+		Supported formats are dependent upon the multimedia capabilities of the underlying platform (e.g. DirectShow on Windows, gstreamer on Linux). (On Windows, I used the K-Lite Codec Pack (Basic) to make a much wider variety of video formats available.)
+	AssetVideo#vid_id(src="las_firebox_clip.mp4")
+
+
+	// AssetObject
+		These are the 3D geometric objects which can be used within the FireBoxRoom. Presently, Wavefront OBJ is the only supported format. Here is the complete list of attributes:
+
+		id - id of the AssetObject
+		src - location of the OBJ file
+		tex0 (default "") - location of a texture image (not using a material file)
+		tex1 (default "") - location of a texture image (not using a material file)
+		tex2 (default "") - location of a texture image (not using a material file)
+		tex3 (default "") - location of a texture image (not using a material file)
+		mtl (default "") - location of the material file (not using texture images)
+		tex_clamp (default "false") - whether to perform texture clamping (GL_CLAMP_TO_EDGE), or allow textures to repeat (GL_REPEAT)
+		tex_linear (default "true") - if true, textures have bilinear filtering applied (GL_LINEAR). If false, a nearest sampling method (GL_NEAREST) is used which gives textures a pixellated look
+		tex_compress (default "false") - if true, uses hardware-supported texture compression on textures (GL_COMPRESSED_RGBA).
+		tex_mipmap (default "true") - if true, uses mipmapping for textures.
+		The URL to the OBJ file is specified by the src attribute. You can also specify materials for the OBJ file using either a single texture file (specified with the tex attribute), or more traditionally by specifying the location of the material file (specified with the mtl attribute).
+
+	AssetObject#pinetree(src="pinetree.obj" tex="pinetree.png")
+	AssetObject#pinetree(src="pinetree.obj" mtl="pinetree.mtl")
