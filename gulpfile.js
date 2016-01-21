@@ -65,14 +65,10 @@ var console             = true;
 if(yarg.dev || yarg.prod) {
   isPrototype   = false;
 }
-else {
-  console.log('Building prototype code');
-}
 
 
 // Singles
 if(yarg.prod) {
-  console.log('Running in production mode');
   isPrototype           = false;
   browserSyncEnabled    = false;
   debug                 = false;
@@ -82,7 +78,6 @@ if(yarg.prod) {
 }
 
 if(yarg.dev) {
-  console.log('Running in development mode');
   browserSyncEnabled   = false;
 }
 
@@ -165,8 +160,8 @@ gulp.task('js', function() {
   
   gulp.src(FILES)
     .pipe(gulpif(ugly, uglify().on('error', function (error) { console.warn(error.message); })))
-    .pipe(gulpif(stripDebug()))
-    .pipe(gulpif(replace({regex:'^((?!function)consoleLog)\\(*.+\\);', replace:''}))) // remove consoleLog() but not def: function consoleLog()
+    .pipe(gulpif(!console, stripDebug()))
+    .pipe(gulpif(!console, replace({regex:'^((?!function)consoleLog)\\(*.+\\);', replace:''}))) // remove consoleLog() but not def: function consoleLog()
     .pipe(concat('main.js'))
     .pipe(gulp.dest(BUILD + JS))
     .pipe(gulpif(isPrototype, browserSync.reload({stream: true}) ) ); 
