@@ -58,7 +58,7 @@ var browserSyncEnabled  = true;
 var debug               = true;
 var ugly                = true;
 var beepbeep            = true;
-var console             = true;
+var showConsole         = true;
 
 
 // Groups
@@ -74,7 +74,7 @@ if(yarg.prod) {
   debug                 = false;
   noUgly                = false;
   beepbeep              = false;
-  console               = false;
+  showConsole           = false;
 }
 
 if(yarg.dev) {
@@ -93,7 +93,7 @@ if(yarg.nougly) {
 }
 
 if(yarg.console) {
-  console = true;
+  showConsole = t
 }
 
 if(yarg.holdthehorn) {
@@ -131,7 +131,7 @@ if(yarg.help) {
 gulp.task('css', function() {
   var FILES = SOURCE + STYLES + '*.scss';
   gulp.src(FILES)
-    .pipe(plumber(function () {
+    .pipe(plumber(function (error) {
         if(beepbeep) {
           beep();
         }
@@ -160,8 +160,8 @@ gulp.task('js', function() {
   
   gulp.src(FILES)
     .pipe(gulpif(ugly, uglify().on('error', function (error) { console.warn(error.message); })))
-    .pipe(gulpif(!console, stripDebug()))
-    .pipe(gulpif(!console, replace({regex:'^((?!function)consoleLog)\\(*.+\\);', replace:''}))) // remove consoleLog() but not def: function consoleLog()
+    .pipe(gulpif(!showConsole, stripDebug()))
+    .pipe(gulpif(!showConsole, replace({regex:'^((?!function)consoleLog)\\(*.+\\);', replace:''}))) // remove consoleLog() but not def: function consoleLog()
     .pipe(concat('main.js'))
     .pipe(gulp.dest(BUILD + JS))
     .pipe(gulpif(isPrototype, browserSync.reload({stream: true}) ) ); 
