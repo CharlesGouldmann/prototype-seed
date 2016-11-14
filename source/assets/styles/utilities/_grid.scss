@@ -17,7 +17,7 @@ $breakpoints:        'palm', 'lap', 'lap-and-up', 'portable', 'desk', 'desk-wide
 
 // Base Variables
 $transitions:        true !default;
-$spacing:            22px !default;
+$spacing:            $spacing !default;
 
 @mixin media($media) {
   @if $media == 'palm-small' {
@@ -69,6 +69,8 @@ $spacing:            22px !default;
   @for $i from 1 through $grid-columns-total {
     .size-#{$i}#{$namespace} {
       width: ($i / $grid-columns-total) * 100%;
+      flex-basis: ($i / $grid-columns-total) * 100%;
+      max-width: ($i / $grid-columns-total) * 100%;
     }
   }
 
@@ -127,6 +129,73 @@ $spacing:            22px !default;
     float: right;
   }
 }
+
+// Only use flexbox grid if supported
+.flexbox {
+
+  .grid-group {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+
+
+  .grid-align {
+    &--start {
+      justify-content: flex-start;
+      text-align: start;
+    }
+
+    &--center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    &--end {
+      justify-content: flex-end;
+      text-align: end;
+    }
+
+    &--top {
+      align-items: flex-start;
+    }
+
+    &--middle {
+      align-items: center;
+    }
+
+    &--bottom {
+      align-items: flex-end;
+    }
+
+
+     // --> Add alignment based on breakpoints
+  }
+
+
+
+  .grid {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+
+  // * - A bit repetative, try to move/change at one point to save space - * 
+
+  @include grid-generate();
+
+  // Generate Grid with all the breakpoint suffix
+  @each $breakpoint in $breakpoints {
+    @include media($breakpoint) {
+      @include grid-generate('--#{$breakpoint}');
+    }
+  }
+
+}
+
 
 //
 // Grid

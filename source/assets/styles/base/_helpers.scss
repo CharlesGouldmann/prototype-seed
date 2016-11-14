@@ -264,13 +264,18 @@ $nths:        2, 3, 4;
 }
 
 .dummy {
-  background-color: darken($color-body, 10%);
-  width: 200px;
+  background-color: darken($color-primary, 10%);
   text-align: center;
+  margin-bottom: $spacing;
+  padding: $spacing;
+  color: $color-light;
 
-  &.square,
-  &.rectangle {
-    width: auto;
+   .dummy {
+    background-color: darken($color-primary, 20%);
+  }
+
+  &--large {
+    padding: $spacing*4 $spacing;
   }
 }
 
