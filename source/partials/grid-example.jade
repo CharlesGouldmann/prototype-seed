@@ -1,0 +1,401 @@
+h2 Grid examples
+
+.landmark
+  h3 Default
+  .grid-group
+    .grid.size-3.size-6--lap.size-12--palm
+      .dummy .grid.size-3.size-6--lap.size-12--palm
+    .grid.size-9.size-6--lap.size-12--palm
+      .dummy .grid.size-9.size-6--lap.size-12--palm
+    .grid.size-9.size-6--lap.size-12--palm
+      .dummy .grid.size-9.size-6--lap.size-12--palm
+    .grid.size-3.size-6--lap.size-12--palm
+      .dummy .grid.size-3.size-6--lap.size-12--palm
+
+
+    .grid.size-12
+        pre 
+          |  .grid-group
+          |    .grid.size-3.size-6--lap.size-12--palm
+          |      .dummy
+          |    .grid.size-9.size-6--lap.size-12--palm
+          |      .dummy
+          |    .grid.size-9.size-6--lap.size-12--palm
+          |      .dummy
+          |    .grid.size-3.size-6--lap.size-12--palm
+          |      .dummy
+
+
+
+
+.landmark
+  h3 Auto Width
+  p grid-items get automatically get width assigned based on the number of grid-items in group. 
+  .grid-group
+    .grid
+      .dummy .grid
+    .grid
+      .dummy .grid
+
+  .grid-group
+    .grid
+      .dummy .grid
+    .grid
+      .dummy .grid
+    .grid
+      .dummy .grid
+    .grid
+      .dummy .grid
+
+
+    .grid.size-12
+        pre 
+          |  .grid-group
+          |    .grid
+          |      .dummy
+          |    .grid
+          |      .dummy
+          | 
+          |  .grid-group
+          |    .grid
+          |      .dummy
+          |    .grid
+          |      .dummy
+          |    .grid
+          |      .dummy
+          |    .grid
+          |      .dummy
+
+
+
+
+
+
+.landmark
+  h3 Alignment
+  .grid-group
+    .grid.size-12
+      h4 .group-align--start
+    .grid
+      .dummy 
+        .grid-group.group-align--start
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre 
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--start
+          |        .grid.size-6
+          |          .dummy
+
+
+
+  .grid-group
+    .grid.size-12
+      h4 .group-align--center
+    .grid
+      .dummy 
+        .grid-group.group-align--center
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--center
+          |        .grid.size-6
+          |          .dummy 
+
+
+  .grid-group
+    .grid.size-12
+      h4 .group-align--end
+    .grid
+      .dummy 
+        .grid-group.group-align--end
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--end
+          |        .grid.size-6
+          |          .dummy
+
+
+  .grid-group
+    .grid.size-12
+      h4 .group-align--top
+    .grid
+      .dummy 
+        .grid-group.group-align--top
+          .grid.size-6
+            .dummy.dummy--large .grid.size-6
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--top
+          |        .grid.size-6
+          |          .dummy.dummy--large
+          |        .grid.size-6
+          |          .dummy
+
+
+  .grid-group
+    .grid.size-12
+      h4 .group-align--middle
+    .grid
+      .dummy 
+        .grid-group.group-align--middle
+          .grid.size-6
+            .dummy.dummy--large .grid.size-6
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--middle
+          |        .grid.size-6
+          |          .dummy.dummy--large
+          |        .grid.size-6
+          |          .dummy
+
+
+
+  .grid-group
+    .grid.size-12
+      h4 .group-align--bottom
+    .grid
+      .dummy 
+        .grid-group.group-align--bottom
+          .grid.size-6
+            .dummy.dummy--large .grid.size-6
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--bottom
+          |        .grid.size-6
+          |          .dummy.dummy--large
+          |        .grid.size-6
+          |          .dummy
+
+
+  .grid-group
+    .grid.size-12
+      h4 .group-align--*alignment*@*breakpoint*
+      p The .group-align classes can also be used within a breakpoint by adding a suffix of '@*breakpoint*' eg. '@palm'
+    .grid
+      .dummy 
+        .grid-group(class="group-align--bottom@lap")
+          .grid.size-6
+            .dummy.dummy--large .grid.size-6
+          .grid.size-6
+            .dummy .grid.size-6
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-align--bottom@palm
+          |        .grid.size-6
+          |          .dummy.dummy--large
+          |        .grid.size-6
+          |          .dummy
+
+
+
+
+
+
+
+.landmark
+  h3 Distribution
+  .grid-group
+    .grid.size-12
+      h4 .group-distribute--around
+    .grid
+      .dummy 
+        .grid-group.group-distribute--around
+          .grid.size-2
+            .dummy .grid.size-2
+          .grid.size-2
+            .dummy .grid.size-2
+          .grid.size-2
+            .dummy .grid.size-2
+
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-distribute--around
+          |        .grid.size-2
+          |          .dummy
+          |        .grid.size-2
+          |          .dummy
+          |        .grid.size-2
+          |          .dummy
+
+  // This one is being silly .. pls fix
+  .grid-group
+    .grid.size-12
+      h4 .group-distribute--between 
+    .grid
+      .dummy 
+        .grid-group.group-distribute--between
+          .grid.size-2
+            .dummy .grid.size-2
+          .grid.size-2
+            .dummy .grid.size-2
+          .grid.size-2
+            .dummy .grid.size-2
+
+    .grid.size-12
+        pre
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-distribute--between
+          |        .grid.size-2
+          |          .dummy
+          |        .grid.size-2
+          |          .dummy
+          |        .grid.size-2
+          |          .dummy
+
+
+
+
+.landmark
+  h3 Reversing
+
+  .grid-group
+    .grid.size-12
+      h4 .group-reverse
+    .grid
+      .dummy 
+        .grid-group.group-reverse
+          .grid.size-2
+            .dummy 1
+          .grid.size-2
+            .dummy 2
+          .grid.size-2
+            .dummy 3
+          .grid.size-2
+            .dummy 4
+          .grid.size-2
+            .dummy 5
+          .grid.size-2
+            .dummy 6
+
+    .grid.size-12
+        pre 
+          |  .grid
+          |    .dummy 
+          |      .grid-group.group-reverse
+          |        .grid.size-2
+          |          .dummy 1
+          |        .grid.size-2
+          |          .dummy 2
+          |        .grid.size-2
+          |          .dummy 3
+          |        .grid.size-2
+          |          .dummy 4
+          |        .grid.size-2
+          |          .dummy 5
+          |        .grid.size-2
+          |          .dummy 6
+
+
+
+.landmark
+  h3 Reordering
+
+  .grid-group
+    .grid.size-12
+      h4 .grid-order--first
+    .grid
+      .dummy 
+        .grid-group
+          .grid.size-2
+            .dummy 1
+          .grid.size-2
+            .dummy 2
+          .grid.size-2
+            .dummy 3
+          .grid.size-2
+            .dummy 4
+          .grid.size-2
+            .dummy 5
+          .grid.size-2.grid-order--first
+            .dummy 6
+
+    .grid.size-12
+        pre 
+          | .grid
+          |   .dummy 
+          |     .grid-group
+          |       .grid.size-2
+          |         .dummy 1
+          |       .grid.size-2
+          |         .dummy 2
+          |       .grid.size-2
+          |         .dummy 3
+          |       .grid.size-2
+          |         .dummy 4
+          |       .grid.size-2
+          |         .dummy 5
+          |       .grid.size-2.grid-order--first
+          |         .dummy 6
+
+
+  .grid-group
+    .grid.size-12
+      h4 .grid-order--last
+    .grid
+      .dummy 
+        .grid-group
+          .grid.size-2.grid-order--last
+            .dummy 1
+          .grid.size-2.grid-order--last
+            .dummy 2
+          .grid.size-2
+            .dummy 3
+          .grid.size-2
+            .dummy 4
+          .grid.size-2
+            .dummy 5
+          .grid.size-2
+            .dummy 6
+
+      .grid.size-12
+        pre 
+          | .grid
+          |   .dummy 
+          |     .grid-group
+          |       .grid.size-2.grid-order--last
+          |         .dummy 1
+          |       .grid.size-2.grid-order--last
+          |         .dummy 2
+          |       .grid.size-2
+          |         .dummy 3
+          |       .grid.size-2
+          |         .dummy 4
+          |       .grid.size-2
+          |         .dummy 5
+          |       .grid.size-2
+          |         .dummy 6

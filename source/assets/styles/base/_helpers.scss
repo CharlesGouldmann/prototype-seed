@@ -269,6 +269,7 @@ $nths:        2, 3, 4;
   margin-bottom: $spacing;
   padding: $spacing;
   color: $color-light;
+  border-radius: $radius-base;
 
    .dummy {
     background-color: darken($color-primary, 20%);

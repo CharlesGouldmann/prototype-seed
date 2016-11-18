@@ -138,41 +138,77 @@ $spacing:            $spacing !default;
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
+
+    // we dont want clearfix for flexbox
+    // as it breaks the spacing
+    &:after {
+      display: none;
+    }
   }
 
 
+    // Grid group classes
+    
+    @mixin generate-group-align($namespace: '') {
 
-  .grid-align {
-    &--start {
-      justify-content: flex-start;
-      text-align: start;
+      .group-align {
+        &--start#{$namespace} {
+          justify-content: flex-start;
+          text-align: start;
+        }
+
+        &--center#{$namespace} {
+          justify-content: center;
+          text-align: center;
+        }
+
+        &--end#{$namespace} {
+          justify-content: flex-end;
+          text-align: end;
+        }
+
+        &--top#{$namespace} {
+          align-items: flex-start;
+        }
+
+        &--middle#{$namespace} {
+          align-items: center;
+        }
+
+        &--bottom#{$namespace} {
+          align-items: flex-end;
+        }
+
+      }
+
     }
 
-    &--center {
-      justify-content: center;
-      text-align: center;
+    // Generate group-align classes without suffix.
+    @include generate-group-align();
+
+    // Generate group-align classes with all the breakpoint suffixes
+    @each $breakpoint in $breakpoints {
+      @include media($breakpoint) {
+        @include generate-group-align('*#{$breakpoint}');
+      }
     }
 
-    &--end {
-      justify-content: flex-end;
-      text-align: end;
+    .group-distribute {
+      &--around {
+        justify-content: space-around;
+      }
+
+      &--between {
+        justify-content: space-between;
+      }
+
+      // --> Add distribution based on breakpoints <---
     }
 
-    &--top {
-      align-items: flex-start;
+    .group-reverse,
+    .grid-group--reverse {
+      flex-direction: row-reverse;
     }
-
-    &--middle {
-      align-items: center;
-    }
-
-    &--bottom {
-      align-items: flex-end;
-    }
-
-
-     // --> Add alignment based on breakpoints
-  }
 
 
 
@@ -183,7 +219,26 @@ $spacing:            $spacing !default;
   }
 
 
-  // * - A bit repetative, try to move/change at one point to save space - * 
+    .grid-order,
+    .grid {
+      &--first {
+        order: -1;
+      }
+
+      &--last {
+        order: 99;
+
+        .group-reverse &,
+        .grid-group--reverse & {
+          order: 0;
+        }
+      }
+    }
+
+
+
+
+  // * - A bit repetitive, try to move/change at one point to save space - * 
 
   @include grid-generate();
 
