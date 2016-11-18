@@ -130,6 +130,13 @@ $spacing:            $spacing !default;
   }
 }
 
+
+
+
+
+// Flexbox grid-system
+//--------------------------------------------------
+
 // Only use flexbox grid if supported
 .flexbox {
 
@@ -146,10 +153,19 @@ $spacing:            $spacing !default;
     }
   }
 
+  .grid {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
 
-    // Grid group classes
+
+
+
+  // Grid-group classes
+  //--------------------------------------------------
     
-    @mixin generate-group-align($namespace: '') {
+    @mixin generate-group-classes($namespace: '') {
 
       .group-align {
         &--start#{$namespace} {
@@ -181,57 +197,75 @@ $spacing:            $spacing !default;
 
       }
 
+
+      .group-distribute {
+        &--around#{$namespace} {
+          justify-content: space-around;
+        }
+
+        &--between#{$namespace} {
+          justify-content: space-between;
+        }
+
+      }
+
+      .group-reverse#{$namespace},
+      .grid-group--reverse#{$namespace} {
+        flex-direction: row-reverse;
+      }
+
+      .group-direction--column#{$namespace} {
+        flex-direction: column;
+      }
+
     }
 
     // Generate group-align classes without suffix.
-    @include generate-group-align();
+    @include generate-group-classes();
 
     // Generate group-align classes with all the breakpoint suffixes
     @each $breakpoint in $breakpoints {
       @include media($breakpoint) {
-        @include generate-group-align('_-#{$breakpoint}');
+        @include generate-group-classes('_-#{$breakpoint}');
       }
     }
 
-    .group-distribute {
-      &--around {
-        justify-content: space-around;
-      }
-
-      &--between {
-        justify-content: space-between;
-      }
-
-      // --> Add distribution based on breakpoints <---
-    }
-
-    .group-reverse,
-    .grid-group--reverse {
-      flex-direction: row-reverse;
-    }
 
 
 
-  .grid {
-    flex-grow: 1;
-    flex-basis: 0;
-    max-width: 100%;
-  }
+  // Grid classes
+  //--------------------------------------------------
 
+    @mixin generate-grid-classes($namespace: '') {
+      .grid-order,
+      .grid {
+        &--first#{$namespace} {
+          order: -1;
 
-    .grid-order,
-    .grid {
-      &--first {
-        order: -1;
-      }
-
-      &--last {
-        order: 99;
-
-        .group-reverse &,
-        .grid-group--reverse & {
-          order: 0;
+          .group-reverse#{$namespace} &,
+          .grid-group--reverse#{$namespace} & {
+            order: 99;
+          }
         }
+
+        &--last#{$namespace} {
+          order: 99;
+
+          .group-reverse#{$namespace} &,
+          .grid-group--reverse#{$namespace} & {
+            order: 0;
+          }
+        }
+      }
+    }
+
+    // Generate group-align classes without suffix.
+    @include generate-grid-classes();
+
+    // Generate group-align classes with all the breakpoint suffixes
+    @each $breakpoint in $breakpoints {
+      @include media($breakpoint) {
+        @include generate-grid-classes('_-#{$breakpoint}');
       }
     }
 
