@@ -1,4 +1,5 @@
 h2 Grid examples
+p This page serves to show what classes and layout options are available with the grid system.
 
 .landmark
   h3 Default
@@ -30,7 +31,7 @@ h2 Grid examples
 
 .landmark
   h3 Auto Width
-  p grid-items get automatically get width assigned based on the number of grid-items in group. 
+  p grid-items automatically get width assigned to them based on the number of grid-items in group. 
   .grid-group
     .grid
       .dummy .grid
@@ -73,6 +74,10 @@ h2 Grid examples
 
 .landmark
   h3 Alignment
+  p Alignment is fairly self-explanatory, items are aligned to one (or more) of six directions:
+    code  start, center, end, top, middle, bottom.
+  p These alignments can also be breakpoint-specific e.g. items can be aligned to the left on desktop, but centered on lap. 
+
   .grid-group
     .grid.size-12
       h4 .group-align--start
@@ -197,11 +202,16 @@ h2 Grid examples
 
   .grid-group
     .grid.size-12
-      h4 .group-align--*alignment*@*breakpoint*
-      p The .group-align classes can also be used within a breakpoint by adding a suffix of '@*breakpoint*' eg. '@palm'
+      h4 .group-align--alignment_-breakpoint
+      p The .group-align classes can also be used within a breakpoint by adding a suffix of 
+        code _- 
+        | and the given breakpoint 
+        | e.g. 
+        code _-palm
+
     .grid
       .dummy 
-        .grid-group(class="group-align--bottom@lap")
+        .grid-group(class="group-align--bottom_-lap")
           .grid.size-6
             .dummy.dummy--large .grid.size-6
           .grid.size-6
@@ -211,7 +221,7 @@ h2 Grid examples
         pre
           |  .grid
           |    .dummy 
-          |      .grid-group.group-align--bottom@palm
+          |      .grid-group.group-align--bottom_-palm
           |        .grid.size-6
           |          .dummy.dummy--large
           |        .grid.size-6
@@ -225,6 +235,10 @@ h2 Grid examples
 
 .landmark
   h3 Distribution
+  p 
+    | With the distribution group-class you can control wheter you want the spacing to be around each grid-item or between them.
+    | The main difference being wheter you want spacing on the left/right on a row, or top/bottom on a column.
+
   .grid-group
     .grid.size-12
       h4 .group-distribute--around
@@ -251,7 +265,7 @@ h2 Grid examples
           |        .grid.size-2
           |          .dummy
 
-  // This one is being silly .. pls fix
+
   .grid-group
     .grid.size-12
       h4 .group-distribute--between 
@@ -282,6 +296,10 @@ h2 Grid examples
 
 .landmark
   h3 Reversing
+  p 
+    | As the name indicates 
+    code .group-reverse 
+    | reverses the order in which the grid-items are shown.
 
   .grid-group
     .grid.size-12
@@ -324,6 +342,9 @@ h2 Grid examples
 
 .landmark
   h3 Reordering
+  p 
+    code .grid-order 
+    | lets you change the order of the individual grid-item. When multiple items are given the class they retain their order compared to each other.
 
   .grid-group
     .grid.size-12

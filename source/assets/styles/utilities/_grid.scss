@@ -189,7 +189,7 @@ $spacing:            $spacing !default;
     // Generate group-align classes with all the breakpoint suffixes
     @each $breakpoint in $breakpoints {
       @include media($breakpoint) {
-        @include generate-group-align('*#{$breakpoint}');
+        @include generate-group-align('_-#{$breakpoint}');
       }
     }
 
