@@ -52,7 +52,7 @@ When that's done, you can push to heroku afterwards by doing:
 and it will automaticly deploy the newest code to heroku and build it there.
 
 
-## Manuel option
+## Manual option
 
 If you do not like creating your app via the command line you can also create it manually.
 
