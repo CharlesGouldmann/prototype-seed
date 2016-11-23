@@ -1,22 +1,24 @@
 {
   "name": "prototype-seed",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Prototype Seed",
   "author": "Chris Kjaer",
+  "contributors":[
+    { "name": "Charles Gouldmann" }
+  ],
   "main": "gulpfile.js",
   "scripts": {
+    "build-project": "gulp build",
     "postinstall": "bower install"
   },
-  "engines": {
-    "node": "0.12",
-    "npm": "2.13.4"
-  },
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "beepbeep": "^1.2.0",
-    "bower": "^1.8.0",
-    "browser-sync": "^2.17.6",
     "colors": "^1.1.2",
+    "gulp-plumber": "^1.1.0"
+  },
+  "dependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.2",
     "del": "^1.2.1",
     "express": "^4.14.0",
     "gulp": "^3.9.1",
@@ -24,15 +26,13 @@
     "gulp-clean-css": "^2.0.13",
     "gulp-concat": "^2.6.1",
     "gulp-if": "^1.2.5",
-    "gulp-if-else": "^1.0.3",
     "gulp-jade": "^1.1.0",
     "gulp-kss": "0.0.2",
-    "gulp-plumber": "^1.1.0",
     "gulp-regex-replace": "^0.2.3",
     "gulp-sass": "^2.3.2",
     "gulp-strip-debug": "^1.0.2",
     "gulp-uglify": "^1.5.4",
-    "gulp-watch": "^4.3.10",
+    "gulp-watch": "^4.3.11",
     "http-auth": "^2.4.11",
     "marked": "^0.3.6",
     "yargs": "^3.32.0"

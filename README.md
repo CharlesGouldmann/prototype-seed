@@ -28,9 +28,15 @@ Gulp will now start a server and open a window with the website.
 - Enable basic HTTP-Auth in the server.js file. This is only enabled when
   serving the site from express. Like when it's hosted on heroku.
 
+
+
+
 # Deploy Prototype to Heroku
 Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/)
 installed.
+
+
+## CLI option
 
 First, create your app:
 
@@ -44,6 +50,18 @@ When that's done, you can push to heroku afterwards by doing:
 ```
 
 and it will automaticly deploy the newest code to heroku and build it there.
+
+
+## Manuel option
+
+If you do not like creating your app via the command line you can also create it manually.
+
+1. Go to heroku.com and log in
+2. From the Dashboard create a new app (there should be a "new" button)
+3. Name your app and make sure to choose `Europe` as the region
+4. After creation go to the `Settings` tab and find and copy the `Git URL`
+5. In your command line type the following: `git remote add heroku ` and paste the URL
+6. Deploy your code: `git push heroku` or if you want to push a specific branch: `git push heroku mybranch:master`
 
 
 
@@ -64,12 +82,14 @@ If you haven't heard about those terms before I recommend reading the following 
 by Philip Walton: http://philipwalton.com/articles/css-architecture/
 
 It goes into depth about what good CSS architecture is and how to use the BEM syntax. 
-Klean has written a short introduction in Danish as well (https://en.bem.info/methodology/quick-start/)
+The following is a short introduction to the BEM methodology (https://en.bem.info/methodology/quick-start/)
 
 __Additional best practices:__
 - Never use ID's for styling. They are more specific than Classes and you will potentional end in CSS specification hell.
 - Strive to only have one level of selecters. __NEVER__ do something like `.foo .bar > .qaz a.li {}`. It's too specific and it's not possible to reuse such a selector anywhere else.
 - margin-top and padding-top should never be used. By only spacing from the bottom, we eliminate a potential spacing conflict.
+- Although tempting try not to create multiple element levels: `Block__Element__Element`. This only leads to tangled code and future frustration.
+
 
 
 ## JS
