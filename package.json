@@ -13,11 +13,6 @@
     "build-project": "gulp build",
     "postinstall": "bower install"
   },
-  "devDependencies": {
-    "beepbeep": "^1.2.0",
-    "colors": "^1.1.2",
-    "gulp-plumber": "^1.1.0"
-  },
   "dependencies": {
     "bower": "^1.8.0",
     "browser-sync": "^2.18.2",
@@ -37,6 +32,9 @@
     "gulp-watch": "^4.3.11",
     "http-auth": "^2.4.11",
     "marked": "^0.3.6",
-    "yargs": "^3.32.0"
+    "yargs": "^3.32.0",
+    "beepbeep": "^1.2.0",
+    "colors": "^1.1.2",
+    "gulp-plumber": "^1.1.0"
   }
 }
