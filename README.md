@@ -1,6 +1,6 @@
 
 # Built on [ Prototype Seed ](https://github.com/chriskjaer/prototype-seed)
-> Includes [BrowserSync](https://github.com/shakyShane/browser-sync) for fast reloading across devices on code changes. [Jade](http://jade-lang.com) templating, [Sass](http://sass-lang.com/), basic html boilerplate with [Respond.js](https://github.com/scottjehl/Respond)(Media Querry fallback) and [Modernizr](http://modernizr.com/) and a simple grid implementation based on a mix of Semantic.gs and Inuit Grid.
+> Includes [BrowserSync](https://github.com/shakyShane/browser-sync) for fast reloading across devices on code changes. [Pug](https://pugjs.org/api/getting-started.html) templating, [Sass](http://sass-lang.com/), basic html boilerplate with [Respond.js](https://github.com/scottjehl/Respond)(Media Querry fallback) and [Modernizr](http://modernizr.com/) and a simple grid implementation based on a mix of Semantic.gs and Inuit Grid.
 
 ## Installation guide:
 
@@ -28,9 +28,15 @@ Gulp will now start a server and open a window with the website.
 - Enable basic HTTP-Auth in the server.js file. This is only enabled when
   serving the site from express. Like when it's hosted on heroku.
 
+
+
+
 # Deploy Prototype to Heroku
 Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/)
 installed.
+
+
+## CLI option
 
 First, create your app:
 
@@ -44,6 +50,18 @@ When that's done, you can push to heroku afterwards by doing:
 ```
 
 and it will automaticly deploy the newest code to heroku and build it there.
+
+
+## Manual option
+
+If you do not like creating your app via the command line you can also create it manually.
+
+1. Go to heroku.com and log in
+2. From the Dashboard create a new app (there should be a "new" button)
+3. Name your app and make sure to choose `Europe` as the region
+4. After creation go to the `Settings` tab and find and copy the `Git URL`
+5. In your command line type the following: `git remote add heroku ` and paste the URL
+6. Deploy your code: `git push heroku` or if you want to push a specific branch: `git push heroku mybranch:master`
 
 
 
@@ -64,12 +82,14 @@ If you haven't heard about those terms before I recommend reading the following 
 by Philip Walton: http://philipwalton.com/articles/css-architecture/
 
 It goes into depth about what good CSS architecture is and how to use the BEM syntax. 
-Klean has written a short introduction in Danish as well (http://klean.dk/indhold/blogs/systematisk-css-med-bem/)
+The following is a short introduction to the BEM methodology (https://en.bem.info/methodology/quick-start/)
 
 __Additional best practices:__
 - Never use ID's for styling. They are more specific than Classes and you will potentional end in CSS specification hell.
 - Strive to only have one level of selecters. __NEVER__ do something like `.foo .bar > .qaz a.li {}`. It's too specific and it's not possible to reuse such a selector anywhere else.
 - margin-top and padding-top should never be used. By only spacing from the bottom, we eliminate a potential spacing conflict.
+- Although tempting try not to create multiple element levels: `Block__Element__Element`. This only leads to tangled code and future frustration.
+
 
 
 ## JS
@@ -110,6 +130,37 @@ The Sass is structured in the following way:
 # For new developers
 It's important that you have read and familiarized yourself with the principles and conventions described above.
 
+## Grid
+The grid is a 12 column fluid-width flexbox grid with a float-based fallback in case the browser does not support flexbox. 
+
+### Usage
+Using the grid is as easy as first defining a `.grid-group`-container and then adding `.grid`-item with the appropriate `.size-*` classes (1-12).
+e.g.
+```
+.grid-group
+  .grid.size-6
+  .grid.size-6
+```
+This results in a grid with two grid-items of 50% width.
+
+It is also possible to assign sizes based on breakpoints.
+To achieve this you use the BEM modifier syntax to the `.size-{i}`-class eg. `.size-12--palm`. 
+
+Let's say you want a grid-item to have a width of 25% as default, 50% on tablet(portrait) and 100% on phones. For this you would write the following:
+```
+.grid-group
+  .grid.size-3.size-6--lap.size-12--palm
+  .grid.size-3.size-6--lap.size-12--palm
+  .grid.size-3.size-6--lap.size-12--palm
+  .grid.size-3.size-6--lap.size-12--palm
+``` 
+
+Available breakpoints: `palm, lap, lap-and-up, portable, desk, desk-wide, ultra-wide`. You can always add more if needed in `source/assets/styles/utilities/_grid.scss`.
+
+Examples of the grid usage is also visible on startup of the project or on [the seed example site](http://proto-seed.herokuapp.com)
+
+### Notes
+The grid does not have any "rows" but instead relies on `.clear-{i}nth` classes. If you want a row you have to either create the styling yourself or use the `.grid-group` as pseudo-rows.
 
 ## Adding new templates/modules:
 When adding new modules to the project, it's important to see if it's possible to build these with some of the existing elements.
@@ -155,6 +206,9 @@ we know that these units area very tightly coupled to that exact location where 
 element is placed which in turn means it's not reusable since that line only works for in this particular situation.
 There can be times where it's nesessary, but as a general rule: Don't use pixels that specific. Use the $spacing variabel or `em`/`%`
 
+
+## Refactoring
+https://slideslive.com/38898201/refactoring-css-without-losing-your-mind
 
 # Styleguide
 The styleguide is based on [Knyle Style Sheets](https://github.com/hughsk/kss-node)

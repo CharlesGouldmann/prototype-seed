@@ -4,8 +4,8 @@ var gulp        = require('gulp'),
     concat      = require('gulp-concat'),
     sass        = require('gulp-sass'),
     uglify      = require('gulp-uglify'),
-    minify      = require('gulp-minify-css'),
-    jade        = require('gulp-jade'),
+    minify      = require('gulp-clean-css'),
+    pug        = require('gulp-pug'),
     watch       = require('gulp-watch'),
     prefix      = require('gulp-autoprefixer'),
     del         = require('del'),
@@ -167,16 +167,16 @@ gulp.task('js', function() {
     .pipe(gulpif(isPrototype, browserSync.reload({stream: true}) ) ); 
 });
 
-// JADE
-gulp.task('jade', function() {
-  var FILES = SOURCE + '*.jade';
+// PUG
+gulp.task('pug', function() {
+  var FILES = SOURCE + '*.pug';
   gulp.src(FILES)
-    .pipe(jade({ pretty: true }))
+    .pipe(pug({ pretty: true }))
     .pipe(plumber(function () {
         if(beepbeep) {
           beep();
         }
-        console.log('[jade]'.bold.tomato + ' There was an issue compiling Sass\n'.bold.red);
+        console.log('[pug]'.bold.tomato + ' There was an issue compiling Pug\n'.bold.red);
         this.emit('end');
     }))
     .pipe(gulp.dest(BUILD) )
@@ -237,7 +237,7 @@ gulp.task('kss', function() {
 });
 
 // --- Bringing it all together in a build task ---
-gulp.task('build', ['js', 'css', 'jade', 'images', 'fonts', 'vendor', 'public', 'kss']);
+gulp.task('build', ['js', 'css', 'pug', 'images', 'fonts', 'vendor', 'public', 'kss']);
 
 
 
@@ -253,7 +253,7 @@ gulp.task('browser-sync', ['build'], function() {
 gulp.task('watch', ['browser-sync'], function () {
   gulp.watch(SOURCE + STYLES + '**/*.scss',['css', 'kss']);
 
-  gulp.watch(SOURCE + '**/*.jade',['jade']);
+  gulp.watch(SOURCE + '**/*.pug',['pug']);
 
   gulp.watch(SOURCE + JS + '**/*.js',['js']);
 

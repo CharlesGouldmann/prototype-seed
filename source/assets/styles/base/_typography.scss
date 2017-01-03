@@ -39,7 +39,7 @@ $line-height-base:   1.3;
 }
 
 %limit-width {
-  max-width: 40rem;
+  max-width: 50rem;
 }
 
 %push-bottom {
@@ -95,12 +95,22 @@ h2,
   @extend %limit-width;
   @extend %push-bottom;
   @extend %flush-top;
+  font-size: $font-size-xlarge;
+  font-weight: $font-weight-base;
+  margin-bottom: $spacing;
+}
+
+h3, 
+.gamma {
+  @extend %limit-width;
+  @extend %push-bottom;
+  @extend %flush-top;
   font-size: $font-size-large;
   font-weight: $font-weight-base;
   margin-bottom: $spacing;
 }
 
-h3, .gamma,
+
 h4, .delta,
 h5, .epsilon,
 h6, .zeta {

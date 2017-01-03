@@ -17,7 +17,7 @@ $breakpoints:        'palm', 'lap', 'lap-and-up', 'portable', 'desk', 'desk-wide
 
 // Base Variables
 $transitions:        true !default;
-$spacing:            22px !default;
+$spacing:            $spacing !default;
 
 @mixin media($media) {
   @if $media == 'palm-small' {
@@ -69,6 +69,8 @@ $spacing:            22px !default;
   @for $i from 1 through $grid-columns-total {
     .size-#{$i}#{$namespace} {
       width: ($i / $grid-columns-total) * 100%;
+      flex-basis: ($i / $grid-columns-total) * 100%;
+      max-width: ($i / $grid-columns-total) * 100%;
     }
   }
 
@@ -127,6 +129,162 @@ $spacing:            22px !default;
     float: right;
   }
 }
+
+
+
+
+
+// Flexbox grid-system
+//--------------------------------------------------
+
+// Only use flexbox grid if supported
+.flexbox {
+
+  .grid-group {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    // we dont want clearfix for flexbox
+    // as it breaks the spacing
+    &:after {
+      display: none;
+    }
+  }
+
+  .grid {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+
+
+
+  // Grid-group classes
+  //--------------------------------------------------
+    
+    @mixin generate-group-classes($namespace: '') {
+
+      .group-align {
+        &--start#{$namespace} {
+          justify-content: flex-start;
+          text-align: start;
+        }
+
+        &--center#{$namespace} {
+          justify-content: center;
+          text-align: center;
+        }
+
+        &--end#{$namespace} {
+          justify-content: flex-end;
+          text-align: end;
+        }
+
+        &--top#{$namespace} {
+          align-items: flex-start;
+        }
+
+        &--middle#{$namespace} {
+          align-items: center;
+        }
+
+        &--bottom#{$namespace} {
+          align-items: flex-end;
+        }
+
+      }
+
+
+      .group-distribute {
+        &--around#{$namespace} {
+          justify-content: space-around;
+        }
+
+        &--between#{$namespace} {
+          justify-content: space-between;
+        }
+
+      }
+
+      .group-reverse#{$namespace},
+      .grid-group--reverse#{$namespace} {
+        flex-direction: row-reverse;
+      }
+
+      .group-direction--column#{$namespace} {
+        flex-direction: column;
+      }
+
+    }
+
+    // Generate group-align classes without suffix.
+    @include generate-group-classes();
+
+    // Generate group-align classes with all the breakpoint suffixes
+    @each $breakpoint in $breakpoints {
+      @include media($breakpoint) {
+        @include generate-group-classes('_-#{$breakpoint}');
+      }
+    }
+
+
+
+
+  // Grid classes
+  //--------------------------------------------------
+
+    @mixin generate-grid-classes($namespace: '') {
+      .grid-order,
+      .grid {
+        &--first#{$namespace} {
+          order: -1;
+
+          .group-reverse#{$namespace} &,
+          .grid-group--reverse#{$namespace} & {
+            order: 99;
+          }
+        }
+
+        &--last#{$namespace} {
+          order: 99;
+
+          .group-reverse#{$namespace} &,
+          .grid-group--reverse#{$namespace} & {
+            order: 0;
+          }
+        }
+      }
+    }
+
+    // Generate group-align classes without suffix.
+    @include generate-grid-classes();
+
+    // Generate group-align classes with all the breakpoint suffixes
+    @each $breakpoint in $breakpoints {
+      @include media($breakpoint) {
+        @include generate-grid-classes('_-#{$breakpoint}');
+      }
+    }
+
+
+
+
+  // * - A bit repetitive, try to move/change at one point to save space - * 
+
+  @include grid-generate();
+
+  // Generate Grid with all the breakpoint suffix
+  @each $breakpoint in $breakpoints {
+    @include media($breakpoint) {
+      @include grid-generate('--#{$breakpoint}');
+    }
+  }
+
+}
+
 
 //
 // Grid
