@@ -146,7 +146,7 @@ This results in a grid with two grid-items of 50% width.
 It is also possible to assign sizes based on breakpoints.
 To achieve this you use the BEM modifier syntax to the `.size-{i}`-class eg. `.size-12--palm`. 
 
-Let's say you want a grid-item to have a with of 25% as default, 50% on tablet(portrait) and 100% on phones. For this you would write the following:
+Let's say you want a grid-item to have a width of 25% as default, 50% on tablet(portrait) and 100% on phones. For this you would write the following:
 ```
 .grid-group
   .grid.size-3.size-6--lap.size-12--palm
@@ -157,7 +157,7 @@ Let's say you want a grid-item to have a with of 25% as default, 50% on tablet(p
 
 Available breakpoints: `palm, lap, lap-and-up, portable, desk, desk-wide, ultra-wide`. You can always add more if needed in `source/assets/styles/utilities/_grid.scss`.
 
-Examples of the grid usage is also visible on startup of the project or on [the seed example site](proto-seed.herokuapp.com)
+Examples of the grid usage is also visible on startup of the project or on [the seed example site](http://proto-seed.herokuapp.com)
 
 ### Notes
 The grid does not have any "rows" but instead relies on `.clear-{i}nth` classes. If you want a row you have to either create the styling yourself or use the `.grid-group` as pseudo-rows.
