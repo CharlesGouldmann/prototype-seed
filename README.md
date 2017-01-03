@@ -130,6 +130,37 @@ The Sass is structured in the following way:
 # For new developers
 It's important that you have read and familiarized yourself with the principles and conventions described above.
 
+## Grid
+The grid is a 12 column fluid-width flexbox grid with a float-based fallback in case the browser does not support flexbox. 
+
+### Usage
+Using the grid is as easy as first defining a `.grid-group`-container and then adding `.grid`-item with the appropriate `.size-*` classes (1-12).
+e.g.
+```
+.grid-group
+  .grid.size-6
+  .grid.size-6
+```
+This results in a grid with two grid-items of 50% width.
+
+It is also possible to assign sizes based on breakpoints.
+To achieve this you use the BEM modifier syntax to the `.size-{i}`-class eg. `.size-12--palm`. 
+
+Let's say you want a grid-item to have a with of 25% as default, 50% on tablet(portrait) and 100% on phones. For this you would write the following:
+```
+.grid-group
+  .grid.size-3.size-6--lap.size-12--palm
+  .grid.size-3.size-6--lap.size-12--palm
+  .grid.size-3.size-6--lap.size-12--palm
+  .grid.size-3.size-6--lap.size-12--palm
+``` 
+
+Available breakpoints: `palm, lap, lap-and-up, portable, desk, desk-wide, ultra-wide`. You can always add more if needed in `source/assets/styles/utilities/_grid.scss`.
+
+Examples of the grid usage is also visible on startup of the project or on [the seed example site](proto-seed.herokuapp.com)
+
+### Notes
+The grid does not have any "rows" but instead relies on `.clear-{i}nth` classes. If you want a row you have to either create the styling yourself or use the `.grid-group` as pseudo-rows.
 
 ## Adding new templates/modules:
 When adding new modules to the project, it's important to see if it's possible to build these with some of the existing elements.
@@ -175,6 +206,9 @@ we know that these units area very tightly coupled to that exact location where 
 element is placed which in turn means it's not reusable since that line only works for in this particular situation.
 There can be times where it's nesessary, but as a general rule: Don't use pixels that specific. Use the $spacing variabel or `em`/`%`
 
+
+## Refactoring
+https://slideslive.com/38898201/refactoring-css-without-losing-your-mind
 
 # Styleguide
 The styleguide is based on [Knyle Style Sheets](https://github.com/hughsk/kss-node)
