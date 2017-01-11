@@ -219,3 +219,4 @@ Read more be following the link before or see some of the examples in the Sass.
 -------------
 
 
+TODO: Add float-based fallback for grid in Safari until [bug](https://bugs.webkit.org/show_bug.cgi?id=136041) is fixed.

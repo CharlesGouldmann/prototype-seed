@@ -145,6 +145,7 @@ $spacing:            $spacing !default;
     flex: 0 1 auto;
     flex-direction: row;
     flex-wrap: wrap;
+    width: 100%;
 
     // we dont want clearfix for flexbox
     // as it breaks the spacing
