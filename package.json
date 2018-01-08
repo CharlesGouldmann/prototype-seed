@@ -1,6 +1,6 @@
 {
   "name": "prototype-seed",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Prototype Seed",
   "author": "Chris Kjaer",
   "contributors": [
@@ -10,31 +10,32 @@
   ],
   "main": "gulpfile.js",
   "scripts": {
-    "build-project": "gulp build",
-    "postinstall": "bower install"
+    "build-project": "gulp build"
   },
   "dependencies": {
-    "bower": "^1.8.0",
-    "browser-sync": "^2.18.2",
+    "beepbeep": "^1.2.1",
+    "browser-sync": "^2.23.3",
+    "colors": "^1.1.2",
     "del": "^1.2.1",
-    "express": "^4.14.0",
+    "express": "^4.16.2",
+    "fitvids": "^2.0.0",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "2.2.0",
-    "gulp-clean-css": "^2.0.13",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
     "gulp-if": "^1.2.5",
     "gulp-kss": "0.0.2",
-    "gulp-pug": "^3.1.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-pug": "^3.3.0",
     "gulp-regex-replace": "^0.2.3",
-    "gulp-sass": "^2.3.2",
+    "gulp-sass": "^3.1.0",
     "gulp-strip-debug": "^1.0.2",
-    "gulp-uglify": "^1.5.4",
-    "gulp-watch": "^4.3.11",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^5.0.0",
     "http-auth": "^2.4.11",
-    "marked": "^0.3.6",
-    "yargs": "^3.32.0",
-    "beepbeep": "^1.2.0",
-    "colors": "^1.1.2",
-    "gulp-plumber": "^1.1.0"
+    "jquery": "^3.2.1",
+    "marked": "^0.3.9",
+    "modernizr": "^3.5.0",
+    "yargs": "^10.0.3"
   }
 }

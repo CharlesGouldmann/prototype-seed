@@ -36,7 +36,7 @@ var SOURCE = 'source/',
     BUILD  = 'build/',
     PUBLIC = 'public/',
     ASSETS = 'assets/',
-    BOWER  = 'bower_components/',
+    NODE   = 'node_modules/',
     STYLES = ASSETS + 'styles/',
     JS     = ASSETS + 'scripts/',
     IMAGES = ASSETS + 'images/',
@@ -150,9 +150,8 @@ gulp.task('css', function() {
 // JS
 gulp.task('js', function() {
   var FILES = [ 
-    BOWER + 'jquery/dist/jquery.js',
-    BOWER + 'fitvids/jquery.fitvids.js',
-    BOWER + 'jquery-validation/dist/jquery-validate.js',
+    NODE + 'jquery/dist/jquery.js',
+    NODE + 'fitvids/dist/fitvids.js',
     SOURCE + JS + 'globals/*.js',
     SOURCE + JS + 'libraries/*.js',
     SOURCE + JS +  '*.js'
@@ -203,8 +202,7 @@ gulp.task('fonts', function() {
 // VENDOR
 gulp.task('vendor', function() {
   var FILES = [
-    BOWER + 'modernizr/modernizr.js',
-    BOWER + 'respond/src/respond.js' ];
+    NODE + 'modernizr/modernizr.js'];
   gulp.src(FILES)
       .pipe(concat('vendor.js'))
       .pipe(uglify())
