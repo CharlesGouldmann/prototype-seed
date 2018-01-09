@@ -1,11 +1,11 @@
 
 # Built on [ Prototype Seed ](https://github.com/chriskjaer/prototype-seed)
-> Includes [BrowserSync](https://github.com/shakyShane/browser-sync) for fast reloading across devices on code changes. [Pug](https://pugjs.org/api/getting-started.html) templating, [Sass](http://sass-lang.com/), basic html boilerplate with [Respond.js](https://github.com/scottjehl/Respond)(Media Querry fallback) and [Modernizr](http://modernizr.com/) and a simple grid implementation based on a mix of Semantic.gs and Inuit Grid.
+> Includes [BrowserSync](https://github.com/shakyShane/browser-sync) for fast reloading across devices on code changes. [Pug](https://pugjs.org/api/getting-started.html) templating, [Sass](http://sass-lang.com/), basic html boilerplate with a simple grid implementation based on a mix of Semantic.gs and Inuit Grid.
 
 ## Installation guide:
 
 __Prerequisites__
-[Node](http://nodejs.org) and [Bower](http://bower.io/)
+[Node](http://nodejs.org)
 
 When those are installed, run the following:
 ```
@@ -166,7 +166,7 @@ The grid does not have any "rows" but instead relies on `.clear-{i}nth` classes.
 When adding new modules to the project, it's important to see if it's possible to build these with some of the existing elements.
 If that's not an option, then see if it's possible to normalize some of the design so that elements can be reused. 
 E.g. we shouldn't add a new class or module specific CSS just because a certain design have `padding-bottom: 19px` while everything
-else have `padding-bottom: 22px`. Aesthetically, it might look slightly better, 
+else has `padding-bottom: 22px`. Aesthetically, it might look slightly better, 
 but for the general user and the business it won't have any impact and it only adds additional CSS to maintain. 
 
 It's important to question the design if it will result in unmaintainable or messy code.

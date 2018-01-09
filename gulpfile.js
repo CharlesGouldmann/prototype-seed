@@ -185,7 +185,7 @@ gulp.task('pug', function() {
 
 // IMAGES
 gulp.task('images', function() {
-  var FILES = SOURCE + IMAGES + '*.*';
+  var FILES = SOURCE + IMAGES + '**/*.*';
   gulp.src(FILES)
     .pipe( gulp.dest(BUILD + IMAGES) );
 });
@@ -196,17 +196,6 @@ gulp.task('fonts', function() {
   var FILES = SOURCE + FONTS + '*.*';
   gulp.src(FILES)
     .pipe( gulp.dest(BUILD + FONTS));
-});
-
-
-// VENDOR
-gulp.task('vendor', function() {
-  var FILES = [
-    NODE + 'modernizr/modernizr.js'];
-  gulp.src(FILES)
-      .pipe(concat('vendor.js'))
-      .pipe(uglify())
-      .pipe(gulp.dest(BUILD + JS));
 });
 
 
@@ -235,7 +224,7 @@ gulp.task('kss', function() {
 });
 
 // --- Bringing it all together in a build task ---
-gulp.task('build', ['js', 'css', 'pug', 'images', 'fonts', 'vendor', 'public', 'kss']);
+gulp.task('build', ['js', 'css', 'pug', 'images', 'fonts', 'public', 'kss']);
 
 
 
