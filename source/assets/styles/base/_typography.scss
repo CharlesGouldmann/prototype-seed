@@ -6,48 +6,72 @@
 $font-family-base:   'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 // Font Sizes
-$font-size-base:     14px;
+$font-size-base:      14px;
 
-$font-size-xlarge:   34px;
-$font-size-large:    20px;
-$font-size-medium:   18px;
-$font-size-small:    10px;
+
+// Above normal scale (anything absurdly big) - based on SI prefixes
+$font-size-giga:      80px;
+$font-size-mega:      45px;
+$font-size-kilo:      40px;
+
+// Normal scale (h1-h6) - based on Greek aplphabet
+$font-size-alpha:     31px;
+$font-size-beta:      24px;
+$font-size-gamma:     21px;
+$font-size-delta:     17px;
+$font-size-epsilon:   16px;
+$font-size-zeta:      15px;
+$font-size-eta:       $font-size-base;
+
+// Below normal scale - based on SI prefixes
+$font-size-milli:     13px;
+$font-size-micro:     12px;
+$font-size-nano:      11px;
+$font-size-pico:      10px;
+$font-size-femto:     9px;
+
+
+// Inbetween normal scale
+$font-size-hecto:     32px;
+$font-size-deca:      28px;
+$font-size-deci:      25px;
+$font-size-centi:     20px;
+
 
 // Font Weights
-$font-weight-base:   400;
-$font-weight-light:  300;
-$font-weight-heavy:  700;
+$font-weight-base:          400;
+$font-weight-medium:        500;
 
-// Line Heights
-$line-height-base:   1.3;
+$font-weight-light:         200;
+$font-weight-thin:          300;
+$font-weight-medium:        500;
+$font-weight-thick:         600;
+$font-weight-heavy:         700;
 
-// Font Size Helpers Classes
-.xlarge {
-  font-size: $font-size-xlarge !important;
-}
+// Line Heights - based on SI prefixes
+$line-height-base:          1.5; // Typically line-height of paragraphs
 
-.large {
-  font-size: $font-size-large !important;
-}
 
-.medium {
-  font-size: $font-size-medium !important;
-}
-
-.small {
-  font-size: $font-size-small !important;
-}
+$line-height-deci:         	1.43;
+$line-height-centi:         1.33;
+$line-height-milli:         1.22;
+$line-height-micro:         1.19;
+$line-height-nano:         	1.15;
 
 %limit-width {
-  max-width: 50rem;
+	max-width: $max-paragraph-width;
 }
 
 %push-bottom {
-  margin-bottom: $spacing;
+	margin-bottom: $spacing;
 }
 
 %flush-top {
-  margin-top: 0;
+	margin-top: 0;
+}
+
+%word-space--small {
+	word-spacing: -0.1em;
 }
 
 
@@ -84,7 +108,7 @@ h1,
   @extend %limit-width;
   @extend %push-bottom;
   @extend %flush-top;
-  font-size: $font-size-xlarge;
+  font-size: $font-size-alpha;
   font-weight: $font-weight-heavy;
   margin-bottom: $spacing;
 }
@@ -95,7 +119,7 @@ h2,
   @extend %limit-width;
   @extend %push-bottom;
   @extend %flush-top;
-  font-size: $font-size-xlarge;
+  font-size: $font-size-beta;
   font-weight: $font-weight-base;
   margin-bottom: $spacing;
 }
@@ -105,7 +129,7 @@ h3,
   @extend %limit-width;
   @extend %push-bottom;
   @extend %flush-top;
-  font-size: $font-size-large;
+  font-size: $font-size-gamma;
   font-weight: $font-weight-base;
   margin-bottom: $spacing;
 }
@@ -116,7 +140,7 @@ h5, .epsilon,
 h6, .zeta {
   @extend %limit-width;
   @extend %flush-top;
-  font-size: $font-size-medium;
+  font-size: $font-size-delta;
   font-weight: $font-weight-heavy;
   margin-bottom: 0;
 }
