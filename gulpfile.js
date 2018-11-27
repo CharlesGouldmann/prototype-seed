@@ -8,22 +8,17 @@ var gulp        = require('gulp'),
 	pug         = require('gulp-pug'),
 	watch       = require('gulp-watch'),
 	prefix      = require('gulp-autoprefixer'),
-	del         = require('del'),
-	server      = require('./server'),
+	gulpif      = require('gulp-if'),
 	kss         = require('gulp-kss'),
+	plumber     = require('gulp-plumber'),
+	stripDebug  = require('gulp-strip-debug'),
+	replace     = require('gulp-regex-replace'),
+	del         = require('del'),
 	browserSync = require('browser-sync'),
 	yarg        = require('yargs').argv,
-	gulpif      = require('gulp-if'),
-	plumber     = require('gulp-plumber'),
 	beep        = require('beepbeep'),
 	colors      = require('colors'),
-	stripDebug  = require('gulp-strip-debug'),
-	replace     = require('gulp-regex-replace');
-
-
-// * extra features *
-// - js lint
-// - blazy js bower
+	server      = require('./server');
 
 
 //
@@ -41,11 +36,6 @@ var SOURCE = 'source/',
 	JS     = ASSETS + 'scripts/',
 	IMAGES = ASSETS + 'images/',
 	FONTS  = ASSETS + 'fonts/';
-
-// Project specific
-
-var PROJECTNAME   = 'prototype-seed';
-
 
 
 // 
@@ -140,7 +130,7 @@ gulp.task('css', function() {
 				this.emit('end');
 		}))
 		.pipe(sass({ errLogToConsole: true }))
-		.pipe(prefix("last 1 version", "> 1%", "ie 9"))
+		.pipe(prefix("last 1 version", "> 1%", "ie 11"))
 		.pipe(gulpif(ugly, minify().on('error', function (error) { console.warn(error.message); })))
 		.pipe(gulp.dest(BUILD + STYLES))
 		.pipe(gulpif(isPrototype,  browserSync.reload({stream: true}) ) ); 
